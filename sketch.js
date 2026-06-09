@@ -25,5 +25,13 @@ function setup() {
 function calculateScore(){
   let x=inputBox.value()
   let prediction=model.predict(x)
-  result.html("sentiment score: "+prediction.score)
+  let predictionScoreRounded=prediction.score.toFixed(3)
+  if(prediction.score>0.5){
+    result.html("Sentiment: Positive. "+predictionScoreRounded)
+    console.log("testing here")
+  } else if(prediction.score<0.5){
+    result.html("Sentiment: Negative. "+predictionScoreRounded)
+  } else {
+    result.html("Sentiment: Neutral. "+predictionScoreRounded)
+  }
 }
